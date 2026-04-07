@@ -5,6 +5,7 @@ import createNewAlias from "@/lib/createNewAlias";
 import Alias from "@/components/Alias";
 import styled from "styled-components";
 import {NewAliasProps} from "@/types";
+import {useSearchParams} from 'next/navigation';
 
 
 const StyledForm = styled.form`
@@ -29,7 +30,6 @@ const StyledInputGroup = styled.div`
     padding: 2%;
 `;
 
-
 const StyledSubmitButton = styled.button`
     display: block;
     width: 100%;
@@ -47,13 +47,15 @@ const StyledTitleGroup = styled.div`
     text-align: center;
 `;
 
+
 export default function NewAliasForm() {
     const [url, setURL] = useState("");
     const [alias, setAlias] = useState("");
     const [hideCopy, setHideCopy] = useState(true);
     const [submissionMetadata, setSubmissionMetadata] = useState<NewAliasProps | null>(null);
     const domainUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
-
+    const searchParams = useSearchParams();
+    const error = searchParams.get('error');
 
     return (
         <StyledForm

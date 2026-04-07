@@ -1,7 +1,7 @@
 'use client';
 import NewAliasForm from "@/components/NewAliasForm";
 import styled from "styled-components";
-import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 
 const StyledWrapper = styled.div`
@@ -16,14 +16,11 @@ const StyledWrapper = styled.div`
 
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const error = searchParams.get('error');
   return (
     <StyledWrapper>
-
-
-      <p>{error}</p>
-      <NewAliasForm />
+      <Suspense fallback={<p>Loading potential errors...</p>}>
+       <NewAliasForm />
+      </Suspense>
     </StyledWrapper>
   );
 }
