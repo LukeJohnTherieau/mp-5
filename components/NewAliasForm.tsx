@@ -90,7 +90,7 @@ const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
 
 const StyledInput = styled.input`
     font-size: calc(12px + 1vw);
-    padding: 1%;
+    padding: 0.5%;
 `;
 
 const StyledLabel = styled.label`
