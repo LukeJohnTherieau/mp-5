@@ -40,7 +40,7 @@ const StyledSubmitButton = styled.button`
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: calc(4px + 1vw);
+    font-size: calc(4px + 2vw);
 `;
 
 const StyledCopyButton = styled.button`
@@ -49,7 +49,7 @@ const StyledCopyButton = styled.button`
     font-weight: bold;
     border: none;
     margin: 0% 1%;
-    font-size: calc(4px + 1vw);
+    font-size: calc(4px + 2vw);
     padding: 1%;
     border-radius: 5px;
     cursor: pointer;
@@ -71,6 +71,7 @@ const StyledAliasDiv = styled.div`
 const StyledP = styled.p`
     color: gray;
     padding: 1%;
+    font-size: calc(4px + 1vw);
 `;
 
 const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
@@ -100,7 +101,7 @@ const StyledLabel = styled.label`
 export default function NewAliasForm() {
     const searchParams = useSearchParams();
     const [url, setURL] = useState("");
-    const [alias, setAlias] = useState(searchParams.get("error"));
+    const [alias, setAlias] = useState("");
     const [hideCopy, setHideCopy] = useState(true);
     const [submissionMetadata, setSubmissionMetadata] = useState<NewAliasProps | null>(null);
     const domainUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
