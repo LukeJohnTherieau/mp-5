@@ -98,13 +98,13 @@ const StyledLabel = styled.label`
 
 
 export default function NewAliasForm() {
+    const searchParams = useSearchParams();
     const [url, setURL] = useState("");
-    const [alias, setAlias] = useState("");
+    const [alias, setAlias] = useState(searchParams.get("error"));
     const [hideCopy, setHideCopy] = useState(true);
     const [submissionMetadata, setSubmissionMetadata] = useState<NewAliasProps | null>(null);
     const domainUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
-    const searchParams = useSearchParams();
-    const error = searchParams.get('error');
+    const error = searchParams.get("error");
 
     
     return (
