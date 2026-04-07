@@ -71,10 +71,11 @@ const StyledAliasDiv = styled.div`
 const StyledP = styled.p`
     color: gray;
     padding: 1%;
-    font-size: calc(12px + 1vw);
+    font-size: calc(4px + 1vw);
 `;
 
 const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
+    font-size: calc(12px + 1vw);
     color: green;
     padding: 1%;
     font-weight: bold;
