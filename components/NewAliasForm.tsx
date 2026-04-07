@@ -71,7 +71,7 @@ const StyledAliasDiv = styled.div`
 const StyledP = styled.p`
     color: gray;
     padding: 1%;
-    font-size: calc(8px + 1vw);
+    font-size: calc(6px + 1vw);
 `;
 
 const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
