@@ -18,12 +18,12 @@ export default async function createNewAlias(url: string, alias: string):Promise
     if (!res.acknowledged) {
       return {
         "successfulSubmission" : false,
-        "message" : "Submission error occured..."
+        "message" : "Something went wrong. Please try again later."
       };
     } else {
       return {
         "successfulSubmission" : true,
-        "message" : "Alias has been submitted"
+        "message" : "Alias has been saved successfully!"
       };
     }
   } else {

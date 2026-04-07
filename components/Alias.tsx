@@ -8,9 +8,9 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
     width: 100%;
     align-items: center;
-    background-color: yellow;
-    // display: flex;
-    // flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
 `;
 
 

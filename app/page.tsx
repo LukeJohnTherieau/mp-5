@@ -5,15 +5,14 @@ import { useSearchParams } from 'next/navigation';
 
 
 const StyledWrapper = styled.div`
-    margin: 0 auto;
-    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
     min-height: 100vh;
-    background-color: red;
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
+    background-color: #ADD8E6;
+    font-family: Arial, sans-serif
 `;
-
 
 
 export default function Home() {
@@ -21,6 +20,8 @@ export default function Home() {
   const error = searchParams.get('error');
   return (
     <StyledWrapper>
+
+
       <p>{error}</p>
       <NewAliasForm />
     </StyledWrapper>
