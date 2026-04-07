@@ -7,10 +7,10 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
     width: 100%;
-    text-align: center;
+    align-items: center;
     background-color: yellow;
-    display: flex;
-    flex-direction: row;
+    // display: flex;
+    // flex-direction: row;
 `;
 
 

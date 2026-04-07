@@ -11,6 +11,8 @@ const StyledForm = styled.form`
     width: 50%;
     background-color: green;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 `;
 
 
@@ -44,7 +46,7 @@ export default function NewAliasForm() {
                 onChange = {(e) => setURL(e.target.value)}
                 required
             />
-            <Alias domainUrl = {domainUrl} alias = {alias} setAlias={setAlias} hideCopy = {hideCopy}/>
+            {/* <Alias domainUrl = {domainUrl} alias = {alias} setAlias={setAlias} hideCopy = {hideCopy}/> */}
             <div className = "w-full flex justify-center">
                 <button type="submit">Create</button>
             </div>
