@@ -70,8 +70,8 @@ const StyledAliasDiv = styled.div`
 
 const StyledP = styled.p`
     color: gray;
-    padding: 1%;
-    font-size: calc(6px + 0.75vw);
+    padding: 0.5%;
+    font-size: calc(8px + 1vw);
 `;
 
 const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
