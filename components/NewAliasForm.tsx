@@ -40,7 +40,7 @@ const StyledSubmitButton = styled.button`
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: calc(12px + 2vw);
+    font-size: calc(4px + 2vw);
 `;
 
 const StyledCopyButton = styled.button`
@@ -49,7 +49,7 @@ const StyledCopyButton = styled.button`
     font-weight: bold;
     border: none;
     margin: 0% 1%;
-    font-size: calc(12px + 2vw);
+    font-size: calc(2px + 2vw);
     padding: 1%;
     border-radius: 5px;
     cursor: pointer;
@@ -88,7 +88,7 @@ const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
 `;
 
 const StyledInput = styled.input`
-    font-size: calc(4px + 1vw);
+    font-size: calc(12px + 1vw);
     padding: 1%;
 `;
 
