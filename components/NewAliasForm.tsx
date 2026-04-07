@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 import createNewAlias from "@/lib/createNewAlias";
-import Alias from "@/components/Alias";
+import sendUrlToClipboard from "@/lib/sendUrlToClipboard";
 import styled from "styled-components";
 import {NewAliasProps} from "@/types";
 import {useSearchParams} from 'next/navigation';
@@ -37,14 +37,63 @@ const StyledSubmitButton = styled.button`
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+    font-size: calc(4px + 1vw);
+`;
+
+const StyledCopyButton = styled.button`
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin: 0% 1%;
+    font-size: calc(4px + 1vw);
+    padding: 1%;
+    border-radius: 5px;
+    cursor: pointer;
 `;
 
 const StyledTitleGroup = styled.div`
     padding: 2%;
     text-align: center;
+`;
+
+const StyledAliasDiv = styled.div`
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+`;
+
+const StyledP = styled.p`
+    color: gray;
+    padding: 1%;
+`;
+
+const StyledMessage = styled.p<{ $successfulSubmission?: boolean; }>`
+    color: green;
+    padding: 1%;
+    font-weight: bold;
+    color: ${(props) => {
+        if (props.$successfulSubmission){
+            return "green";
+        } else {
+            return "red";
+        }
+    }};
+`;
+
+const StyledInput = styled.input`
+    font-size: calc(4px + 1vw);
+    padding: 1%;
+`;
+
+const StyledLabel = styled.label`
+    font-size: calc(4px + 1.2vw);
+    padding: 1%;
 `;
 
 
@@ -57,6 +106,7 @@ export default function NewAliasForm() {
     const searchParams = useSearchParams();
     const error = searchParams.get('error');
 
+    
     return (
         <StyledForm
             onSubmit={(e) => {
@@ -75,11 +125,11 @@ export default function NewAliasForm() {
         >
             <StyledTitleGroup>
                 <h1>URL Shortener</h1>
-                <p>Enter a URL and a custom alias to create your shortened URL!</p>
+                <StyledP>Enter a URL and a custom alias to create your shortened URL!</StyledP>
             </StyledTitleGroup>
             <StyledInputGroup>
-                <label>URL</label>
-                <input
+                <StyledLabel>URL</StyledLabel>
+                <StyledInput
                     value={url}
                     type="url"
                     onChange={(e) => setURL(e.target.value)}
@@ -88,13 +138,23 @@ export default function NewAliasForm() {
                 />
             </StyledInputGroup>
             <StyledInputGroup>
-                <label>Custom Alias</label>
-                <Alias domainUrl={domainUrl} alias={alias} setAlias={setAlias} hideCopy={hideCopy} />
+                <StyledLabel>Custom Alias</StyledLabel>
+                <StyledAliasDiv>
+                    <StyledP>{domainUrl}/</StyledP>
+                    <StyledInput
+                        placeholder = "your-custom-alias"
+                        type = "text"
+                        value = {alias}
+                        onChange = {(e) => setAlias(e.target.value)}
+                        required
+                    />
+                    <StyledCopyButton type="button" onClick={() => sendUrlToClipboard(domainUrl, alias)} hidden = {hideCopy}>Copy</StyledCopyButton>
+                </StyledAliasDiv>
             </StyledInputGroup>
             <div className="w-full flex justify-center">
                 <StyledSubmitButton type="submit">Shorten URL and Save Alias</StyledSubmitButton>
             </div>
-            <p hidden={submissionMetadata?.message == ""}>{submissionMetadata?.message}</p>
+            <StyledMessage $successfulSubmission={submissionMetadata?.successfulSubmission} hidden={submissionMetadata?.message == ""}>{submissionMetadata?.message}{error}</StyledMessage>
         </StyledForm>
     );
 }

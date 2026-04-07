@@ -1,7 +1,7 @@
 'use client';
 import NewAliasForm from "@/components/NewAliasForm";
 import styled from "styled-components";
-import { Suspense } from 'react';
+import {Suspense} from 'react';
 
 
 const StyledWrapper = styled.div`
