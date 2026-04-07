@@ -1,4 +1,4 @@
-export default async function sendUrlToClipboard(domainUrl:string, alias:string){
-    navigator.clipboard.writeText(`${domainUrl}/${alias}`);
+export default async function sendUrlToClipboard(url:string){
+    navigator.clipboard.writeText(url);
     return 
 }

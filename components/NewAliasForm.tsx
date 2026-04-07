@@ -105,7 +105,7 @@ export default function NewAliasForm() {
     const [alias, setAlias] = useState("");
     const [hideCopy, setHideCopy] = useState(true);
     const [submissionMetadata, setSubmissionMetadata] = useState<NewAliasProps | null>(null);
-    const domainUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "";
     const error = searchParams.get("error");
 
     
@@ -142,7 +142,7 @@ export default function NewAliasForm() {
             <StyledInputGroup>
                 <StyledLabel>Custom Alias</StyledLabel>
                 <StyledAliasDiv>
-                    <StyledP>{domainUrl}/</StyledP>
+                    <StyledP>{BASE_URL}/</StyledP>
                     <StyledInput
                         placeholder = "your-custom-alias"
                         type = "text"
@@ -150,7 +150,7 @@ export default function NewAliasForm() {
                         onChange = {(e) => setAlias(e.target.value)}
                         required
                     />
-                    <StyledCopyButton type="button" onClick={() => sendUrlToClipboard(domainUrl, alias)} hidden = {hideCopy}>Copy</StyledCopyButton>
+                    <StyledCopyButton type="button" onClick={() => sendUrlToClipboard(`${BASE_URL}/${alias}`)} hidden = {hideCopy}>Copy</StyledCopyButton>
                 </StyledAliasDiv>
             </StyledInputGroup>
             <div className="w-full flex justify-center">
