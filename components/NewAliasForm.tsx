@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import {useState,useRef} from "react";
 import createNewAlias from "@/lib/createNewAlias";
 import sendUrlToClipboard from "@/lib/sendUrlToClipboard";
 import styled from "styled-components";
@@ -103,7 +103,6 @@ export default function NewAliasForm() {
     const searchParams = useSearchParams();
     const [url, setURL] = useState("");
     const [alias, setAlias] = useState("");
-    const [hideCopy, setHideCopy] = useState(true);
     const [submissionMetadata, setSubmissionMetadata] = useState<NewAliasProps | null>(null);
     const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "";
     const error = searchParams.get("error");
@@ -115,14 +114,8 @@ export default function NewAliasForm() {
                 e.preventDefault();
                 createNewAlias(url, alias).then((newSubmissionMetadata) => {
                     setSubmissionMetadata(newSubmissionMetadata);
-                    if (submissionMetadata?.successfulSubmission) {
-                        setHideCopy(false);
-                    } else {
-                        setHideCopy(true);
-                    }
                 }
-                )
-                    .catch((err) => console.error(err));
+                ).catch((err) => console.error(err));
             }}
         >
             <StyledTitleGroup>
@@ -150,7 +143,7 @@ export default function NewAliasForm() {
                         onChange = {(e) => setAlias(e.target.value)}
                         required
                     />
-                    <StyledCopyButton type="button" onClick={() => sendUrlToClipboard(`${BASE_URL}/${alias}`)} hidden = {hideCopy}>Copy</StyledCopyButton>
+                    <StyledCopyButton type="button" onClick={() => sendUrlToClipboard(`${BASE_URL}/${alias}`)}>Copy</StyledCopyButton>
                 </StyledAliasDiv>
             </StyledInputGroup>
             <div className="w-full flex justify-center">
