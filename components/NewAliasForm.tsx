@@ -40,7 +40,7 @@ const StyledSubmitButton = styled.button`
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: calc(4px + 2vw);
+    font-size: calc(4px + 1vw);
 `;
 
 const StyledCopyButton = styled.button`
@@ -116,9 +116,9 @@ export default function NewAliasForm() {
                 createNewAlias(url, alias).then((newSubmissionMetadata) => {
                     setSubmissionMetadata(newSubmissionMetadata);
                     if (submissionMetadata?.successfulSubmission) {
-                        setHideCopy(true);
-                    } else {
                         setHideCopy(false);
+                    } else {
+                        setHideCopy(true);
                     }
                 }
                 )
