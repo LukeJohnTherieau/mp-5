@@ -5,7 +5,13 @@ import getCollection, { ALIAS_COLLECTION } from "@/db";
 import {NewAliasProps} from "@/types";
 
 
-export default async function createNewAlias(url: string, alias: string):Promise<NewAliasProps> {
+export default async function createNewAlias(BASE_URL: string, url: string, alias: string):Promise<NewAliasProps> {
+  if (url.startsWith(BASE_URL)) {
+    return {
+      "successfulSubmission" : false,
+      "message" : "Circular urls are not allowed"
+    };
+  }
   const p = {
     url: url,
     alias: alias

@@ -112,7 +112,7 @@ export default function NewAliasForm() {
         <StyledForm
             onSubmit={(e) => {
                 e.preventDefault();
-                createNewAlias(url, alias).then((newSubmissionMetadata) => {
+                createNewAlias(BASE_URL, url, alias).then((newSubmissionMetadata) => {
                     setSubmissionMetadata(newSubmissionMetadata);
                 }
                 ).catch((err) => console.error(err));
